@@ -1,0 +1,94 @@
+
+
+/*
+** For Here's Life Tracts
+*/
+
+table {
+  table-layout: fixed;
+}
+#tract-table{
+	border:none;
+}
+.tract-header{
+	background-color: #FFF;
+	border:none;
+}
+tr.infotract-row,
+tr.tract-row,
+tr:nth-child(2n+2).tract-row{
+	border:none;
+	background-color: #FFF;
+}
+
+
+a{
+	color:#aa0040;
+}
+
+td.tract{
+	background-color: #FFF;
+	vertical-align: top;
+	border:none;
+	
+}
+td.tract.image,
+td.tract.circle1,
+td.tract.circle2{
+	text-align: center;
+}
+.title{
+	font-size: 2em;
+	color: #0d9ecc;
+	
+}
+.lawheading{
+	font-size: 1.2em;
+	font-weight: bold;
+	color: darkred;
+}
+.law{
+	font-size: 1.2em;
+	color: #0d9ecc;
+}
+.tract.heading{
+	font-size: 1.2em;
+	color: #0d9ecc;
+	color: #f8aa00;
+	font-weight: bold;
+}
+.tract.verse{
+	font-size: 1em;
+	font-style: italic;
+	color: green;
+	
+}
+.text{
+	font-size: 1em;
+	color: #000;
+	
+}
+.explanation{
+	font-size: .8em;
+	color: #000;
+	
+}
+.self_head,
+.christ_head{
+	font-size: 1em;
+	color: #000;
+	text-align:center;
+	font-weight: bold;
+}
+.circle_footer{
+	font-size: 1em;
+	color: #000;
+	text-align:left;
+	font-weight: bold;
+}
+.tract.heading.translation,
+.tract.verse.translation,
+.translation{
+	color: #aaa;
+	
+}

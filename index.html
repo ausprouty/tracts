@@ -1,0 +1,93 @@
+<html>
+<head>
+<script src="css/source-sans-pro.js"></script>
+<link href="css/styles.css" rel="stylesheet">
+<link href="css/tracts.css" rel="stylesheet">
+</head>
+<body>
+
+<script id="home-tpl" type="text/x-handlebars-template">
+    <div class='header'><h1>Tracts</h1></div>
+    <div class='search-bar'><input class='search-key' type="search"/></div>
+		<div id = 'container'>
+    <div class="scroll"><ul class='employee-list'></ul>
+		</div>
+
+</script>
+<script type="text/javascript" charset="utf-8">
+    /**
+     * Load page into url
+     *
+     * @param url           The url to load
+     * @param onleave       The function to call before leaving
+     * @param onenter       The function to call after loading
+     */
+    function loadPage(url, onleave, onenter) {
+        console.log("loadPage("+url+")");
+
+        // If onleave function specified
+        if (onleave) {
+            onleave();
+        }
+
+        var xmlhttp = new XMLHttpRequest();
+
+        // Callback function when XMLHttpRequest is ready
+        xmlhttp.onreadystatechange=function(){
+            if(xmlhttp.readyState === 4){
+                if (xmlhttp.status === 200) {
+                    console.log("Received content"+xmlhttp.responseText);
+                    document.getElementById('container').innerHTML = xmlhttp.responseText;
+
+                    // If onenter function specified
+                    if (onenter) {
+                        onenter();
+                    }
+                }
+                else {
+                    document.getElementById('container').innerHTML = "Error loading page " + url;
+                }
+            }
+        };
+        xmlhttp.open("GET", url , true);
+        xmlhttp.send();
+    }
+
+    /**
+     * Function called when page has finished loading.
+     */
+    function init() {
+
+        // Register for PhoneGap deviceready event
+        document.addEventListener("deviceready", function() {console.log("PhoneGap initialized.")}, false);
+
+        // Load first page into container
+        loadPage("screen1.html");
+    }
+    </script>
+
+<script id="employee-li-tpl" type="text/x-handlebars-template">
+    {{#.}}
+		<li><a id="myLink" title="Show Tract"
+           href="#" onclick="loadPage('files/' + '{{file}}', null, null);return false;">{{this.name}}</a></li>
+    {{/.}}
+</script>
+
+<script id="employee-tpl" type="text/x-handlebars-template">
+    <div class='header'><a href='#' class="button header-button header-button-left">Back</a><h1>Details</h1></div>
+    <div id='container'>
+    <h1>{{name}} </h1>
+		<button type="button" onclick="loadPage('files/' + '{{file}}', null, null);">View Tract</button>
+    </div>
+</script>
+
+<script src="phonegap.js"></script>
+<script src="lib/jquery-1.8.2.min.js"></script>
+<script src="lib/handlebars.js"></script>
+<script src="js/storage/ls-store.js"></script>
+<script src="js/HomeView.js"></script>
+<script src="js/EmployeeView.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
